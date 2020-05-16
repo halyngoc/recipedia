@@ -2,8 +2,10 @@ import { createGlobalStyle } from 'styled-components';
 
 export const theme = {
   background: '#FCF9ED', // light yellow
+  background2: 'white',
   text: '#665C84',       // purple
-  accent1: '#FF7657',    // orange
+  text2: 'white',
+  accent: '#FF7657',     // orange
   accent2: '#FFBA5A',    // orange-yellow
 }
 
