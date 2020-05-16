@@ -15,7 +15,7 @@ export default function SearchButton(props) {
   const device = useDevice()
 
   return (
-    <IconButton onClick={onClick}>
+    <IconButton onClick={onClick} aria-label="Search">
       <box-icon
         name="search"
         color={theme.text}
