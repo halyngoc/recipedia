@@ -19,3 +19,13 @@ export function useDevice() {
   else if (windowWidth < 960) return 'tablet'
   else return 'desktop'
 }
+
+export function useFetch(url, initialValue = '') {
+  const [data, setData] = useState(initialValue)
+
+  useEffect(() => {
+    fetch(url).then(response => response.json()).then(json => setData(json))
+  }, [url])
+
+  return data
+}
