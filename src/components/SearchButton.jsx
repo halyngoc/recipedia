@@ -7,6 +7,7 @@ import styled from 'styled-components'
 const IconButton = styled.button`
   background: none;
   border: none;
+  padding: 0;
 `
 
 export default function SearchButton(props) {
@@ -18,7 +19,7 @@ export default function SearchButton(props) {
       <box-icon
         name="search"
         color={theme.text}
-        size={device === 'mobile' ? 'md' : 'lg'}
+        size={device === 'mobile' ? '2.5rem' : '3.5rem'}
       />
     </IconButton>
   )
