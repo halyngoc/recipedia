@@ -17,7 +17,7 @@ function App() {
       <Main>
         <GlobalStyles />
         <Logo />
-        <SearchButton />
+        <SearchButton onClick={() => console.log('search button clicked')} />
       </Main>
     </ThemeProvider>
   )
