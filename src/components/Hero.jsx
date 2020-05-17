@@ -37,7 +37,8 @@ export default function Hero(props) {
   return (
     <HeroContainer device={device}>
       <h1>Good {timeOfDay()}{name.length > 0 && <><>, </><span>{name}</span></>}</h1>
-      {date.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+      {date.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) +
+        ' ' + date.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })}
       <div>
         <Button device={device} variant="primary" onClick={onBrowseClick}>Browse recipes</Button>
         <Button device={device} variant="secondary" onClick={onSeeFavoritesClick}>See my favorites</Button>
