@@ -7,7 +7,17 @@ import styled from 'styled-components'
 const IconButton = styled.button`
   background: none;
   border: none;
-  padding: 0;
+  border-radius: 10px;
+  padding: 5px 0 0 5px;
+
+  :active {
+    filter: saturate(5);
+  }
+
+  :focus {
+    outline: none;
+    box-shadow: 0 0 0 2px ${theme.text};
+  }
 `
 
 export default function SearchButton(props) {

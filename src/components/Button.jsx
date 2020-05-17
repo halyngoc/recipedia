@@ -12,7 +12,7 @@ export const Button = styled.button`
   padding: ${props => props.device === 'mobile' ? '0.5rem 2.25rem' : '0.5rem 2.75rem'};
 
   :active {
-    filter: saturate(3)
+    filter: saturate(5);
   }
 
   :focus {
