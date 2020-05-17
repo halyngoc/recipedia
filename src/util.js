@@ -30,3 +30,14 @@ export function useFetch(url, initialValue = '') {
 
   return data
 }
+
+export function useDate(refreshInterval = 60000) {
+  const [date, setDate] = useState(new Date())
+
+  useEffect(() => {
+    const intervalId = setInterval(() => setDate(new Date()), refreshInterval);
+    return () => clearInterval(intervalId)
+  }, [refreshInterval])
+
+  return date
+}
