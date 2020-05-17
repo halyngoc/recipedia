@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { breakpoints } from './global'
 
 export function useWindowWidth() {
   const [width, setWidth] = useState(window.innerWidth)
@@ -15,8 +16,8 @@ export function useWindowWidth() {
 export function useDevice() {
   const windowWidth = useWindowWidth()
 
-  if (windowWidth < 600) return 'mobile'
-  else if (windowWidth < 960) return 'tablet'
+  if (windowWidth < breakpoints.mobile) return 'mobile'
+  else if (windowWidth < breakpoints.tablet) return 'tablet'
   else return 'desktop'
 }
 

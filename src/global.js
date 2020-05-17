@@ -1,5 +1,11 @@
 import { createGlobalStyle } from 'styled-components'
 
+export const breakpoints = {
+  mobile: 600,
+  tablet: 960,
+  desktop: 1024,
+}
+
 export const theme = {
   background: '#FCF9ED', // light yellow
   background2: 'white',

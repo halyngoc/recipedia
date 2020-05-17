@@ -1,14 +1,15 @@
 import styled from 'styled-components'
+import { breakpoints } from '../global'
 
 export const Container = styled.div`
   max-width: ${props => {
     switch (props.device) {
       case 'mobile':
-        return '600px'
+        return `${breakpoints.mobile}px`
       case 'tablet':
-        return '960px'
+        return `${breakpoints.tablet}px`
       default:
-        return '1024px'
+        return `${breakpoints.desktop}px`
     }
   }};
   margin: ${props => {
