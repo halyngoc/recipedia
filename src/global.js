@@ -32,3 +32,14 @@ export const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }`
+
+export const alignMargin = (align) => {
+  switch (align) {
+    case 'left':
+      return '0 auto 0 0'
+    case 'right':
+      return '0 0 0 auto'
+    default:
+      return '0 auto'
+  }
+}

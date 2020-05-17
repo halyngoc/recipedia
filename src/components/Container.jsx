@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints } from '../global'
+import { breakpoints, alignMargin } from '../global'
 
 export const Container = styled.div`
   max-width: ${props => {
@@ -12,14 +12,5 @@ export const Container = styled.div`
         return `${breakpoints.desktop}px`
     }
   }};
-  margin: ${props => {
-    switch (props.align) {
-      case 'left':
-        return '0 auto 0 0'
-      case 'right':
-        return '0 0 0 auto'
-      default:
-        return '0 auto'
-    }
-  }};
+  margin: ${props => alignMargin(props.align)};
 `
