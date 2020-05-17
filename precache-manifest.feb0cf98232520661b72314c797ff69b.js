@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a3f07eafcc20664c81c47fd6adee3a55",
+    "revision": "b99c40b1bab085dc61f43a6039147b73",
     "url": "/recipedia/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/recipedia/static/js/2.4062a5e9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d88e073bd7e2ce06c267",
-    "url": "/recipedia/static/js/main.7b4e5e9b.chunk.js"
+    "revision": "260d530c3ef5bbceb3bb",
+    "url": "/recipedia/static/js/main.8f4f10ec.chunk.js"
   },
   {
     "revision": "856688276154979f23b4",
