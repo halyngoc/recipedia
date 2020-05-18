@@ -5,23 +5,26 @@ on:
     branches: [ master, gh-actions ]
 
 jobs:
-  deploy:
-
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js 10.x
       uses: actions/setup-node@v1
       with:
         node-version: '10.x'
-    - name: Install node modules
-      run: npm install
-    - name: Set up user
-      run: |
-        git config --global user.email "lyha@pdx.edu"
-        git config --global user.name "halyngoc"
-    - name: Deploy to gh-pages
+        persist-credentials: false
+    - name: Install and build
       env:
         REACT_APP_API_KEY: ${{ secrets.x_rapidapi_key }}
-      run: npm run deploy
+      run: |
+        npm install
+        npm run build
+    - name: Deploy to GitHub pages
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      env:
+        REACT_APP_API_KEY: ${{ secrets.x_rapidapi_key }}        
+      with:
+        ACCESS_TOKEN: ${{ secrets.access_token }}
+        BRANCH: gh-pages
+        FOLDER: build
