@@ -1,4 +1,4 @@
-name: Build and test
+name: Build
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -15,10 +15,9 @@ jobs:
       with:
         node-version: '10.x'
         persist-credentials: false
-    - name: Build and test
+    - name: Build
       env:
         REACT_APP_API_KEY: ${{ secrets.x_rapidapi_key }} 
       run: |
         npm install
         npm run build
-        npm test
