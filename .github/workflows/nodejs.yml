@@ -20,7 +20,7 @@ jobs:
     - name: Set up user
       run: |
         git config --global user.email "lyha@pdx.edu"
-        git config --global user.name "Ha Ly"
+        git config --global user.name "halyngoc
     - name: Deploy to gh-pages
       env:
         REACT_APP_API_KEY: ${{ secrets.x_rapidapi_key }}
