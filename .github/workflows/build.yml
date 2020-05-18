@@ -1,0 +1,23 @@
+name: Build
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+        persist-credentials: false
+    - name: Build
+      env:
+        REACT_APP_API_KEY: ${{ secrets.x_rapidapi_key }} 
+      run: |
+        npm install
+        npm run build
