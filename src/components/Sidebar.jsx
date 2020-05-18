@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import RecipeTab from './RecipeTab'
-import { useFetch } from '../util'
+// import { useFetch } from '../util'
 
 const SidebarContainer = styled.div`
   display: flex;
 `
 
 export default function Sidebar() {
-  const sampleRecipe = useFetch('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/479101/information?includeNutrition=true')
+  // const sampleRecipe = useFetch('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/479101/information?includeNutrition=true')
 
   return (
     <SidebarContainer>
