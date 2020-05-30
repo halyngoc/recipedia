@@ -18,6 +18,7 @@ export function useDevice() {
 
   if (windowWidth < breakpoints.mobile) return 'mobile'
   else if (windowWidth < breakpoints.tablet) return 'tablet'
+  else if (windowWidth < breakpoints.laptop) return 'laptop'
   else return 'desktop'
 }
 
