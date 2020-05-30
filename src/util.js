@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'
 import { breakpoints } from './global'
 
+export function isOneColumnLayout(device) {
+  return device === 'mobile' || device === 'tablet'
+}
+
 export function useWindowWidth() {
   const [width, setWidth] = useState(window.innerWidth)
 
