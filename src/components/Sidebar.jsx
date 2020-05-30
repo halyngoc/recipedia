@@ -2,12 +2,10 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import RecipeTab from './RecipeTab'
 import ArrowButton from './ArrowButton'
-import { useFetch, useDevice } from '../util'
+import { useDevice } from '../util'
 import { theme } from '../global'
 
-
 import { recipe as sampleRecipe } from '../sampleResources'
-
 const sampleRecipes = Array(5).fill(sampleRecipe)
 
 const SidebarContainer = styled.div`
