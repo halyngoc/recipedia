@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import RecipeTab from './RecipeTab'
+import ArrowButton from './ArrowButton'
 import { useFetch, useDevice } from '../util'
 
 const SidebarContainer = styled.div`
@@ -37,19 +38,25 @@ export default function Sidebar() {
       return (
         <SidebarContainer>
           {currentTab === 0 &&
-            <RecipeTab
-              header="Discover"
-              recipes={[]}
-              buttonLabel="See recent"
-              onButtonClick={() => console.log('see recent button clicked')}
-            />}
+            <>
+              <RecipeTab
+                header="Discover"
+                recipes={[]}
+                buttonLabel="See recent"
+                onButtonClick={() => console.log('see recent button clicked')}
+              />
+              <ArrowButton onClick={() => setCurrentTab(1)} isLeft={false} />
+            </>}
           {currentTab === 1 &&
-            <RecipeTab
-              header="My favorites"
-              recipes={[]}
-              buttonLabel="See favorites"
-              onButtonClick={() => console.log('see favorites button clicked')}
-            />}
+            <>
+              <RecipeTab
+                header="My favorites"
+                recipes={[]}
+                buttonLabel="See favorites"
+                onButtonClick={() => console.log('see favorites button clicked')}
+              />
+              <ArrowButton onClick={() => setCurrentTab(0)} isLeft={true} />
+            </>}
         </SidebarContainer>
       )
     default: // tablet & mobile
