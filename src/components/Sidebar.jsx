@@ -5,6 +5,11 @@ import ArrowButton from './ArrowButton'
 import { useFetch, useDevice } from '../util'
 import { theme } from '../global'
 
+
+import { recipe as sampleRecipe } from '../sampleResources'
+
+const sampleRecipes = Array(5).fill(sampleRecipe)
+
 const SidebarContainer = styled.div`
   display: flex;
   flex-direction: ${props => props.direction === 'vertical' ? 'row' : 'column'};
@@ -33,13 +38,13 @@ export default function Sidebar() {
         <SidebarContainer direction="vertical">
           <RecipeTab
             header="Discover"
-            recipes={[]}
+            recipes={sampleRecipes}
             buttonLabel="See recent"
             onButtonClick={() => console.log('see recent button clicked')}
           />
           <RecipeTab
             header="My favorites"
-            recipes={[]}
+            recipes={sampleRecipes}
             buttonLabel="See favorites"
             onButtonClick={() => console.log('see favorites button clicked')}
           />
@@ -52,7 +57,7 @@ export default function Sidebar() {
             <>
               <RecipeTab
                 header="Discover"
-                recipes={[]}
+                recipes={sampleRecipes}
                 buttonLabel="See recent"
                 onButtonClick={() => console.log('see recent button clicked')}
               />
@@ -63,7 +68,7 @@ export default function Sidebar() {
               <ArrowButton onClick={() => setCurrentTab(0)} isLeft={true} />
               <RecipeTab
                 header="My favorites"
-                recipes={[]}
+                recipes={sampleRecipes}
                 buttonLabel="See favorites"
                 onButtonClick={() => console.log('see favorites button clicked')}
               />
@@ -73,20 +78,18 @@ export default function Sidebar() {
     default: // tablet & mobile
       return (
         <SidebarContainer>
-          {currentTab === 0 &&
-            <RecipeTab
-              header="Discover"
-              recipes={[]}
-              buttonLabel="See recent"
-              onButtonClick={() => console.log('see recent button clicked')}
-            />}
-          {currentTab === 1 &&
-            <RecipeTab
-              header="My favorites"
-              recipes={[]}
-              buttonLabel="See favorites"
-              onButtonClick={() => console.log('see favorites button clicked')}
-            />}
+          <RecipeTab
+            header="Discover"
+            recipes={sampleRecipes}
+            buttonLabel="See recent"
+            onButtonClick={() => console.log('see recent button clicked')}
+          />
+          <RecipeTab
+            header="My favorites"
+            recipes={sampleRecipes}
+            buttonLabel="See favorites"
+            onButtonClick={() => console.log('see favorites button clicked')}
+          />
         </SidebarContainer>
       )
   }
