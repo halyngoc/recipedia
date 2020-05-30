@@ -3,11 +3,22 @@ import styled from 'styled-components'
 import RecipeTab from './RecipeTab'
 import ArrowButton from './ArrowButton'
 import { useFetch, useDevice } from '../util'
+import { theme } from '../global'
 
 const SidebarContainer = styled.div`
   display: flex;
-  flex-direction: ${props => props.direction || 'row'};
+  flex-direction: ${props => props.direction === 'vertical' ? 'row' : 'column'};
   flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+  background-color: ${theme.background2};
+  padding: 1.5rem 2.5rem;
+  width: ${props => props.direction === 'vertical' ? 'fit-content' : '100%'};
+  height: ${props => props.direction === 'vertical' ? '100vh' : 'fit-content'};
+
+  > *:first-child {
+    margin-right: 1.5rem;
+  }
 `
 
 export default function Sidebar() {
@@ -19,7 +30,7 @@ export default function Sidebar() {
   switch (device) {
     case 'desktop':
       return (
-        <SidebarContainer>
+        <SidebarContainer direction="vertical">
           <RecipeTab
             header="Discover"
             recipes={[]}
@@ -36,7 +47,7 @@ export default function Sidebar() {
       )
     case 'laptop':
       return (
-        <SidebarContainer>
+        <SidebarContainer direction="vertical">
           {currentTab === 0 &&
             <>
               <RecipeTab
@@ -49,19 +60,19 @@ export default function Sidebar() {
             </>}
           {currentTab === 1 &&
             <>
+              <ArrowButton onClick={() => setCurrentTab(0)} isLeft={true} />
               <RecipeTab
                 header="My favorites"
                 recipes={[]}
                 buttonLabel="See favorites"
                 onButtonClick={() => console.log('see favorites button clicked')}
               />
-              <ArrowButton onClick={() => setCurrentTab(0)} isLeft={true} />
             </>}
         </SidebarContainer>
       )
     default: // tablet & mobile
       return (
-        <SidebarContainer direction="column">
+        <SidebarContainer>
           {currentTab === 0 &&
             <RecipeTab
               header="Discover"
