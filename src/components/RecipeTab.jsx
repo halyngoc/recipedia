@@ -7,7 +7,6 @@ import { useDevice, isOneColumnLayout } from '../util'
 const TabContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
   margin-bottom: 1rem;
@@ -33,7 +32,6 @@ const VerticalTabContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: space-between;
   align-items: center;
   width: min-content;
   height: 100%;
