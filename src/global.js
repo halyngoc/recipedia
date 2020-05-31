@@ -3,7 +3,8 @@ import { createGlobalStyle } from 'styled-components'
 export const breakpoints = {
   mobile: 600,
   tablet: 960,
-  desktop: 1024,
+  laptop: 1280,
+  desktop: 1920,
 }
 
 export const theme = {
@@ -31,7 +32,26 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.text};
     margin: 0;
-  }`
+  }
+
+  /* Scrollbar */
+  *::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  *::-webkit-scrollbar-track {
+    background: none;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.text};
+    border-radius: 10px;
+    border: none;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: ${({ theme }) => theme.text + ' #ffffff00'};\
+  }
+`
 
 export const alignMargin = (align) => {
   switch (align) {

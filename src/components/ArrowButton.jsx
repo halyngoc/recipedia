@@ -4,14 +4,14 @@ import { theme } from '../global'
 import { useDevice } from '../util'
 import { IconButton } from './Button'
 
-export default function SearchButton(props) {
-  const { onClick } = props
+export default function ArrowButton(props) {
+  const { onClick, isLeft } = props
   const device = useDevice()
 
   return (
-    <IconButton onClick={onClick} aria-label="Search">
+    <IconButton onClick={onClick} aria-label={isLeft ? 'Left arrow' : 'Right arrow'}>
       <box-icon
-        name="search"
+        name={isLeft ? 'left-arrow' : 'right-arrow'}
         color={theme.text}
         size={device === 'mobile' ? '2.5rem' : '3.5rem'}
       />
