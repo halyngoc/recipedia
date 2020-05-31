@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import RecipeTab from './RecipeTab'
 import ArrowButton from './ArrowButton'
 import { useDevice } from '../util'
 import { theme } from '../global'
+import { FavoriteRecipesContext } from '../FavoriteRecipesContext'
 
 import { recipe as sampleRecipe } from '../sampleResources'
 const sampleRecipes = Array(5).fill(sampleRecipe)
@@ -42,6 +43,7 @@ const VerticalSidebarContainer = styled.div`
 export default function Sidebar() {
   const device = useDevice()
   const [currentTab, setCurrentTab] = useState(0)
+  const [favoriteRecipes] = useContext(FavoriteRecipesContext)
 
   switch (device) {
     case 'desktop':
@@ -55,7 +57,7 @@ export default function Sidebar() {
           />
           <RecipeTab
             header="My favorites"
-            recipes={sampleRecipes}
+            recipes={favoriteRecipes}
             buttonLabel="See favorites"
             onButtonClick={() => console.log('see favorites button clicked')}
           />
@@ -79,7 +81,7 @@ export default function Sidebar() {
               <ArrowButton onClick={() => setCurrentTab(0)} isLeft={true} />
               <RecipeTab
                 header="My favorites"
-                recipes={sampleRecipes}
+                recipes={favoriteRecipes}
                 buttonLabel="See favorites"
                 onButtonClick={() => console.log('see favorites button clicked')}
               />
@@ -97,7 +99,7 @@ export default function Sidebar() {
           />
           <RecipeTab
             header="My favorites"
-            recipes={sampleRecipes}
+            recipes={favoriteRecipes}
             buttonLabel="See favorites"
             onButtonClick={() => console.log('see favorites button clicked')}
           />

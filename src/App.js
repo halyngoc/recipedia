@@ -8,6 +8,7 @@ import { useDevice, isOneColumnLayout } from './util'
 import { Container } from './components/Container'
 import Hero from './components/Hero'
 import Sidebar from './components/Sidebar'
+import { FavoriteRecipesProvider } from './FavoriteRecipesContext'
 
 const AppContainer = styled.div`
   display: flex;
@@ -33,25 +34,27 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <AppContainer device={device}>
-        <Container device={device} align={isOneColumnLayout(device) ? 'center' : 'right'} alignItems="center">
-          <article>
-            <header>
-              <Logo />
-              <SearchButton onClick={() => console.log('search button clicked')} />
-            </header>
-            <main>
-              <Hero
-                name={name}
-                onBrowseClick={() => console.log('browse button clicked')}
-                onSeeFavoritesClick={() => console.log('see favorites button clicked')}
-              />
-            </main>
-          </article>
-        </Container>
-        <aside><Sidebar /></aside>
-      </AppContainer>
+      <FavoriteRecipesProvider>
+        <GlobalStyles />
+        <AppContainer device={device}>
+          <Container device={device} align={isOneColumnLayout(device) ? 'center' : 'right'} alignItems="center">
+            <article>
+              <header>
+                <Logo />
+                <SearchButton onClick={() => console.log('search button clicked')} />
+              </header>
+              <main>
+                <Hero
+                  name={name}
+                  onBrowseClick={() => console.log('browse button clicked')}
+                  onSeeFavoritesClick={() => console.log('see favorites button clicked')}
+                />
+              </main>
+            </article>
+          </Container>
+          <aside><Sidebar /></aside>
+        </AppContainer>
+      </FavoriteRecipesProvider>
     </ThemeProvider>
   )
 }
