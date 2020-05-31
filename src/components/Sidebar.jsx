@@ -10,14 +10,29 @@ const sampleRecipes = Array(5).fill(sampleRecipe)
 
 const SidebarContainer = styled.div`
   display: flex;
-  flex-direction: ${props => props.direction === 'vertical' ? 'row' : 'column'};
+  flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-around;
   background-color: ${theme.background2};
   padding: 1.5rem 2.5rem;
-  width: ${props => props.direction === 'vertical' ? 'fit-content' : '100%'};
-  height: ${props => props.direction === 'vertical' ? '100vh' : 'fit-content'};
+  width: 100%;
+  height: fit-content;
+
+  > *:first-child {
+    margin-bottom: 2rem;
+  }
+`
+const VerticalSidebarContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+  background-color: ${theme.background2};
+  padding: 1.5rem 2.5rem;
+  width: fit-content;
+  height: 100vh;
 
   > *:first-child {
     margin-right: 1.5rem;
@@ -25,15 +40,13 @@ const SidebarContainer = styled.div`
 `
 
 export default function Sidebar() {
-  // const sampleRecipe = useFetch('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/479101/information?includeNutrition=true')
-
   const device = useDevice()
   const [currentTab, setCurrentTab] = useState(0)
 
   switch (device) {
     case 'desktop':
       return (
-        <SidebarContainer direction="vertical">
+        <VerticalSidebarContainer>
           <RecipeTab
             header="Discover"
             recipes={sampleRecipes}
@@ -46,11 +59,11 @@ export default function Sidebar() {
             buttonLabel="See favorites"
             onButtonClick={() => console.log('see favorites button clicked')}
           />
-        </SidebarContainer>
+        </VerticalSidebarContainer>
       )
     case 'laptop':
       return (
-        <SidebarContainer direction="vertical">
+        <VerticalSidebarContainer>
           {currentTab === 0 &&
             <>
               <RecipeTab
@@ -71,7 +84,7 @@ export default function Sidebar() {
                 onButtonClick={() => console.log('see favorites button clicked')}
               />
             </>}
-        </SidebarContainer>
+        </VerticalSidebarContainer>
       )
     default: // tablet & mobile
       return (

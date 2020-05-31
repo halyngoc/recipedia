@@ -20,7 +20,7 @@ const TabContainer = styled.div`
   > div {
     display: flex;
     overflow-x: scroll;
-    padding: 1rem;
+    padding: 0 1rem;
     width: 100%;
 
     button {
@@ -48,7 +48,6 @@ const VerticalTabContainer = styled.div`
     flex-direction: column;
     flex-wrap: nowrap;
     overflow-y: scroll;
-    padding: 0 1rem;
     margin: 0 0 1rem 0;
   }
 `
