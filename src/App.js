@@ -8,7 +8,7 @@ import { useDevice, isOneColumnLayout } from './util'
 import { Container } from './components/Container'
 import Hero from './components/Hero'
 import Sidebar from './components/Sidebar'
-import { FavoriteRecipesProvider } from './FavoriteRecipesContext'
+import { RecipesProvider } from './RecipesContext'
 
 const AppContainer = styled.div`
   display: flex;
@@ -34,7 +34,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <FavoriteRecipesProvider>
+      <RecipesProvider>
         <GlobalStyles />
         <AppContainer device={device}>
           <Container device={device} align={isOneColumnLayout(device) ? 'center' : 'right'} alignItems="center">
@@ -54,7 +54,7 @@ function App() {
           </Container>
           <aside><Sidebar /></aside>
         </AppContainer>
-      </FavoriteRecipesProvider>
+      </RecipesProvider>
     </ThemeProvider>
   )
 }
