@@ -26,7 +26,7 @@ export function useDevice() {
   else return 'desktop'
 }
 
-export function useFetch(url, initialValue = '') {
+export function useFetch(url, initialValue = {}) {
   const [data, setData] = useState(initialValue)
 
   const apiKey = process.env.REACT_APP_API_KEY
