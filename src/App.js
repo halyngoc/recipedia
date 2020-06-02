@@ -9,6 +9,7 @@ import { Container } from './components/Container'
 import Hero from './components/Hero'
 import Sidebar from './components/Sidebar'
 import { RecipesProvider } from './RecipesContext'
+import Charts from './components/charts/Charts'
 
 const AppContainer = styled.div`
   display: flex;
@@ -49,6 +50,7 @@ function App() {
                   onBrowseClick={() => console.log('browse button clicked')}
                   onSeeFavoritesClick={() => console.log('see favorites button clicked')}
                 />
+                <Charts />
               </main>
             </article>
           </Container>
