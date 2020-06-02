@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useEffect } from 'react'
-import { recipe as sampleRecipe } from './sampleResources'
+import { recipe as sampleRecipe, randomRecipes as sampleRandomRecipes } from './sampleResources'
 
 export const RecipesContext = createContext([])
 
@@ -25,7 +25,7 @@ const loadFavoriteRecipes = () => JSON.parse(localStorage.getItem('favoriteRecip
 
 export function RecipesProvider(props) {
   // Sample data to save api calls
-  const randomRecipes = Array(100).fill(sampleRecipe)
+  const randomRecipes = sampleRandomRecipes
   // Actual api data here
   // const randomRecipes = useFetch('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=10').recipes || []
 
