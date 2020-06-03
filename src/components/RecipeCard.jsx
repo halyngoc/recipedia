@@ -16,8 +16,8 @@ const RecipeCardContainer = styled.div`
     text-decoration: none;
 
     img {
-      width: 15rem;
-      height: 9rem;
+      width: 13rem;
+      height: 8rem;
       border-radius: 10px;
       border: 5px solid ${theme.accent};
     }

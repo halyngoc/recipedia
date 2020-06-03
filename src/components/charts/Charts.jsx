@@ -8,9 +8,10 @@ import AverageWeightWatcherPoints from './AverageWeightWatcherPoints'
 const ChartsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 
   > div > * {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
 `
 

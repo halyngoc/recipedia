@@ -12,5 +12,6 @@ export const Container = styled.div`
         return `${breakpoints.desktop}px`
     }
   }};
+  width: 100%;
   margin: ${props => alignMargin(props.align)};
 `

@@ -2,10 +2,22 @@ import React from 'react'
 import { ResponsivePie } from '@nivo/pie'
 import { theme } from '../../global'
 import styled from 'styled-components'
+import { useDevice } from '../../util'
+
+function deviceToChartSize(device) {
+  switch (device) {
+    case 'tablet':
+      return ['17.5rem', '15rem']
+    case 'laptop':
+      return ['18rem', '16rem']
+    default:
+      return ['20rem', '19rem']
+  }
+}
 
 const ChartContainer = styled.div`
-  height: 22rem;
-  width: 30rem;
+  width: ${props => deviceToChartSize(props.device)[0]};
+  height: ${props => deviceToChartSize(props.device)[1]};
   text-align: center;
 `
 
@@ -56,8 +68,10 @@ function recipesToData(recipes) {
 }
 
 export default function RecipesByCategory({ label, recipes }) {
+  const device = useDevice()
+
   return (
-    <ChartContainer>
+    <ChartContainer device={device}>
       {label}
       <ResponsivePie
         data={recipesToData(recipes)}

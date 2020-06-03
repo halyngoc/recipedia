@@ -13,8 +13,9 @@ const SidebarContainer = styled.div`
   align-items: center;
   justify-content: space-around;
   background-color: ${theme.background2};
-  padding: 1.5rem 2.5rem;
+  padding: 1rem 1rem;
   width: 100%;
+  height: 100%;
   height: fit-content;
 
   > *:first-child {
@@ -28,7 +29,7 @@ const VerticalSidebarContainer = styled.div`
   align-items: center;
   justify-content: space-around;
   background-color: ${theme.background2};
-  padding: 1.5rem 2.5rem;
+  padding: 1.5rem 0.5rem;
   width: fit-content;
   height: 100vh;
 
