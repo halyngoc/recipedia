@@ -1,16 +1,5 @@
 import React from 'react'
-import { theme } from '../../global'
-import styled from 'styled-components'
-
-const StatsContainer = styled.div`
-  color: ${theme.text};
-  text-align: center;
-
-  > div {
-    color: ${theme.accent};
-    font-size: 1.4rem;
-  }
-`
+import { StatsContainer } from './StatsContainer'
 
 function recipesToAveragePrepTime(recipes) {
   if (recipes.length === 0) return 0
