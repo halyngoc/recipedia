@@ -6,6 +6,7 @@ import styled from 'styled-components'
 const ChartContainer = styled.div`
   height: 22rem;
   width: 30rem;
+  text-align: center;
 `
 
 function recipesToData(recipes) {
@@ -57,7 +58,7 @@ function recipesToData(recipes) {
 export default function RecipesByCategory({ label, recipes }) {
   return (
     <ChartContainer>
-      <legend>{label}</legend>
+      {label}
       <ResponsivePie
         data={recipesToData(recipes)}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
