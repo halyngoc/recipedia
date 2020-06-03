@@ -1,7 +1,12 @@
 import React from 'react'
 import { ResponsivePie } from '@nivo/pie'
-import { ChartContainer } from './ChartContainer'
 import { theme } from '../../global'
+import styled from 'styled-components'
+
+const ChartContainer = styled.div`
+  height: 22rem;
+  width: 30rem;
+`
 
 function recipesToData(recipes) {
   let vegetarianCount = 0
