@@ -4,32 +4,66 @@ import RecipesByCategory from './RecipesByCategory'
 import { RecipesContext } from '../../RecipesContext'
 import AveragePrepTime from './AveragePrepTime'
 import AverageWeightWatcherPoints from './AverageWeightWatcherPoints'
+import { useDevice, isOneColumnLayout } from '../../util'
 
 const ChartsContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
 
-  > div > * {
-    margin-bottom: 2rem;
+  > div {
+    display: grid; 
+    grid-template-columns: 10rem 10rem 25rem;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.5rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+`
+
+const VerticalChartsContainer = styled.div`
+  display: grid;
+  width: 100%;
+
+  > div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 48% 48%;
+    grid-template-rows: 1fr 1fr auto;
+    gap: 1.5rem;
   }
 `
 
 export default function Charts() {
   const [randomRecipes, favoriteRecipes] = useContext(RecipesContext)
+  const device = useDevice()
 
-  return (
-    <ChartsContainer>
-      <div>
-        <AveragePrepTime label="An average recipe takes" recipes={randomRecipes} />
-        <AverageWeightWatcherPoints label="An average recipe has" recipes={randomRecipes} />
-        <RecipesByCategory label={`${randomRecipes.length} random recipes by category`} recipes={randomRecipes} />
-      </div>
-      <div>
-        <AveragePrepTime label="Your average favorite recipe takes" recipes={favoriteRecipes} />
-        <AverageWeightWatcherPoints label="Your average favorite recipe has" recipes={favoriteRecipes} />
-        <RecipesByCategory label="Your favorite recipes by category" recipes={favoriteRecipes} />
-      </div>
-    </ChartsContainer>
-  )
+  if (isOneColumnLayout(device)) {
+    return (
+      <ChartsContainer>
+        <div>
+          <AveragePrepTime label="An average recipe takes" recipes={randomRecipes} />
+          <AverageWeightWatcherPoints label="An average recipe has" recipes={randomRecipes} />
+          <RecipesByCategory label={`${randomRecipes.length} random recipes by category`} recipes={randomRecipes} />
+          <AveragePrepTime label="Your average favorite recipe takes" recipes={favoriteRecipes} />
+          <AverageWeightWatcherPoints label="Your average favorite recipe has" recipes={favoriteRecipes} />
+          <RecipesByCategory label="Your favorite recipes by category" recipes={favoriteRecipes} />
+        </div>
+      </ChartsContainer>
+    )
+  } else {
+    return (
+      <VerticalChartsContainer>
+        <div>
+          <AveragePrepTime label="An average recipe takes" recipes={randomRecipes} />
+          <AveragePrepTime label="Your average favorite recipe takes" recipes={favoriteRecipes} />
+          <AverageWeightWatcherPoints label="An average recipe has" recipes={randomRecipes} />
+          <AverageWeightWatcherPoints label="Your average favorite recipe has" recipes={favoriteRecipes} />
+          <RecipesByCategory label={`${randomRecipes.length} random recipes by category`} recipes={randomRecipes} />
+          <RecipesByCategory label="Your favorite recipes by category" recipes={favoriteRecipes} />
+        </div>
+      </VerticalChartsContainer>
+    )
+  }
+
 }

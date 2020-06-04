@@ -34,7 +34,7 @@ const VerticalSidebarContainer = styled.div`
   height: 100vh;
 
   > *:first-child {
-    margin-right: 1.5rem;
+    margin-right: 1rem;
   }
 `
 

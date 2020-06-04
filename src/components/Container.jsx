@@ -9,7 +9,7 @@ export const Container = styled.div`
       case 'tablet':
         return `${breakpoints.tablet}px`
       default:
-        return `${breakpoints.desktop}px`
+        return `${breakpoints.laptop}px`
     }
   }};
   width: 100%;

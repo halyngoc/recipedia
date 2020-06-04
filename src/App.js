@@ -24,7 +24,7 @@ const AppContainer = styled.div`
   }
 
   article {
-    padding: ${props => isOneColumnLayout(props.device) ? '2.5rem 3rem' : '0.75rem 1.25rem'};
+    padding: ${props => isOneColumnLayout(props.device) ? '0.75rem 1.25rem' : '1rem 1.25rem'};
     overflow-y: scroll;
     height: ${props => isOneColumnLayout(props.device) ? 'auto' : '100%'};
   }
