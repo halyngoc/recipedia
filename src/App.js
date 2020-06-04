@@ -9,14 +9,24 @@ import { Container } from './components/Container'
 import Hero from './components/Hero'
 import Sidebar from './components/Sidebar'
 import { RecipesProvider } from './RecipesContext'
+import Charts from './components/charts/Charts'
 
 const AppContainer = styled.div`
   display: flex;
   justify-content: ${props => isOneColumnLayout(props.device) ? 'flex-start' : 'flex-end'};
   flex-direction: ${props => isOneColumnLayout(props.device) ? 'column' : 'row'};
+  height: 100vh;
+
+  main {
+    > :first-child {
+      margin-bottom: 3rem;
+    }
+  }
 
   article {
-    padding: ${props => props.device === 'mobile' ? '0.75rem 1.25rem' : '3rem 3.5rem'};
+    padding: ${props => isOneColumnLayout(props.device) ? '0.75rem 1.25rem' : '1rem 1.25rem'};
+    overflow-y: scroll;
+    height: ${props => isOneColumnLayout(props.device) ? 'auto' : '100%'};
   }
 
   header {
@@ -49,6 +59,7 @@ function App() {
                   onBrowseClick={() => console.log('browse button clicked')}
                   onSeeFavoritesClick={() => console.log('see favorites button clicked')}
                 />
+                <Charts />
               </main>
             </article>
           </Container>

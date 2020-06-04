@@ -13,7 +13,7 @@ export default function SearchButton(props) {
       <box-icon
         name="search"
         color={theme.text}
-        size={device === 'mobile' ? '2.5rem' : '3.5rem'}
+        size={device === 'mobile' ? '2rem' : '3rem'}
       />
     </IconButton>
   )
