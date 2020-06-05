@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import { theme } from '../global'
 
 const RecipeCardContainer = styled.div`
+  display: block;
+  max-width: 13rem;
+
   * {
     margin: 0;
   }
@@ -46,7 +49,6 @@ export default function RecipeCard(props) {
   const charLimit = 80
   const summary = instructions.length < charLimit ? instructions : instructions.substring(0, charLimit) + '...'
 
-  // TODO: Display actual recipe card
   return (
     <RecipeCardContainer>
       <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
