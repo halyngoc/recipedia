@@ -1,12 +1,11 @@
 import React from 'react'
-import Logo from '../Logo'
-import SearchButton from '../buttons/SearchButton'
 import styled from 'styled-components'
 import { useDevice, isOneColumnLayout } from '../../util'
 import { Container } from '../Container'
 import Hero from '../Hero'
 import Sidebar from '../Sidebar'
 import Charts from '../charts/Charts'
+import Header from '../Header'
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -25,12 +24,6 @@ const DashboardContainer = styled.div`
     overflow-y: scroll;
     height: ${props => isOneColumnLayout(props.device) ? 'auto' : '100%'};
   }
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
-  }
 `
 
 export default function Dashboard({ username, onBrowseClick, onSeeFavoritesClick, onSearchClick }) {
@@ -43,10 +36,7 @@ export default function Dashboard({ username, onBrowseClick, onSeeFavoritesClick
         align={isOneColumnLayout(device) ? 'center' : 'right'}
         alignItems="center">
         <article>
-          <header>
-            <Logo />
-            <SearchButton onClick={onSearchClick} />
-          </header>
+          <Header onSearchClick={() => console.log('search clicked')} />
           <main>
             <Hero
               name={username}
