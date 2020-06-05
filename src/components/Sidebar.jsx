@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import RecipeTab from './RecipeTab'
-import ArrowButton from './ArrowButton'
+import ArrowButton from './buttons/ArrowButton'
 import { useDevice } from '../util'
 import { theme } from '../global'
 import { RecipesContext } from '../RecipesContext'
