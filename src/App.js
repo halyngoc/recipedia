@@ -1,15 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { theme, GlobalStyles } from './global'
 import { ThemeProvider } from 'styled-components'
 import { RecipesProvider } from './RecipesContext'
-import Dashboard from './Dashboard'
+import Dashboard from './components/pages/Dashboard'
+import Browse from './components/pages/Browse'
 
 function App() {
+  const [currentPage, setCurrentPage] = useState('dashboard')
+  const [username, setUsername] = useState('user') // TODO: Implement name change
+
   return (
     <ThemeProvider theme={theme}>
       <RecipesProvider>
         <GlobalStyles />
-        <Dashboard />
+        {currentPage === 'dashboard' &&
+          <Dashboard
+            username={username}
+            onBrowseClick={() => setCurrentPage('browse')}
+            onSeeFavoritesClick={() => console.log('see favorites clicked')}
+            onSearchClick={() => console.log('search clicked')}
+          />}
+        {currentPage === 'browse' && <Browse />}
       </RecipesProvider>
     </ThemeProvider>
   )

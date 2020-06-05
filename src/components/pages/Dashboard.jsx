@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import Logo from './components/Logo'
-import SearchButton from './components/buttons/SearchButton'
+import React from 'react'
+import Logo from '../Logo'
+import SearchButton from '../buttons/SearchButton'
 import styled from 'styled-components'
-import { useDevice, isOneColumnLayout } from './util'
-import { Container } from './components/Container'
-import Hero from './components/Hero'
-import Sidebar from './components/Sidebar'
-import Charts from './components/charts/Charts'
+import { useDevice, isOneColumnLayout } from '../../util'
+import { Container } from '../Container'
+import Hero from '../Hero'
+import Sidebar from '../Sidebar'
+import Charts from '../charts/Charts'
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -33,31 +33,36 @@ const DashboardContainer = styled.div`
   }
 `
 
-export default function Dashboard() {
+export default function Dashboard({ username, onBrowseClick, onSeeFavoritesClick, onSearchClick }) {
   const device = useDevice()
-  const [name, setName] = useState('')
-
-  useEffect(() => setName('Ha'), []) // TODO: Replace this with actual user's name
 
   return (
     <DashboardContainer device={device}>
-      <Container device={device} align={isOneColumnLayout(device) ? 'center' : 'right'} alignItems="center">
+      <Container
+        device={device}
+        align={isOneColumnLayout(device) ? 'center' : 'right'}
+        alignItems="center">
         <article>
           <header>
             <Logo />
-            <SearchButton onClick={() => console.log('search button clicked')} />
+            <SearchButton onClick={onSearchClick} />
           </header>
           <main>
             <Hero
-              name={name}
-              onBrowseClick={() => console.log('browse button clicked')}
-              onSeeFavoritesClick={() => console.log('see favorites button clicked')}
+              name={username}
+              onBrowseClick={onBrowseClick}
+              onSeeFavoritesClick={onSeeFavoritesClick}
             />
             <Charts />
           </main>
         </article>
       </Container>
-      <aside><Sidebar /></aside>
+      <aside>
+        <Sidebar
+          onDiscoverClick={onBrowseClick}
+          onFavoritesClick={onSeeFavoritesClick}
+        />
+      </aside>
     </DashboardContainer>
   )
 }
