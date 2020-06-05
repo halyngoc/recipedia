@@ -20,7 +20,11 @@ function App() {
             onSeeFavoritesClick={() => console.log('see favorites clicked')}
             onSearchClick={() => console.log('search clicked')}
           />}
-        {currentPage === 'browse' && <Browse onSearchClick={() => console.log('search clicked')} />}
+        {currentPage === 'browse' &&
+          <Browse
+            searchQuery="lolzor"
+            onSearchClick={() => console.log('search clicked')}
+          />}
       </RecipesProvider>
     </ThemeProvider>
   )
