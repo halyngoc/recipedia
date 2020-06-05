@@ -59,7 +59,7 @@ const BrowseContainer = styled.div`
 //   return [recipes, getNextBatch]
 // }
 
-export default function Browse({ onSearchClick, searchQuery }) {
+export default function Browse({ onSearchClick, searchQuery, onLogoClick }) {
   const device = useDevice()
 
   const searchQueryExists = searchQuery && searchQuery.length > 0
@@ -78,7 +78,7 @@ export default function Browse({ onSearchClick, searchQuery }) {
         alignItems="center"
       >
         <article>
-          <Header onSearchClick={onSearchClick} />
+          <Header onSearchClick={onSearchClick} onLogoClick={onLogoClick} />
           <main>
             {searchQueryExists &&
               <>

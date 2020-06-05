@@ -24,6 +24,7 @@ function App() {
           <Browse
             searchQuery="vegan"
             onSearchClick={() => console.log('search clicked')}
+            onLogoClick={() => setCurrentPage('dashboard')}
           />}
       </RecipesProvider>
     </ThemeProvider>

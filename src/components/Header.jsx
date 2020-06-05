@@ -9,10 +9,10 @@ const HeaderContainer = styled.header`
   margin: 0;
 `
 
-export default function Header({ onSearchClick }) {
+export default function Header({ onSearchClick, onLogoClick }) {
   return (
     <HeaderContainer>
-      <Logo />
+      <Logo onClick={onLogoClick} />
       <SearchButton onClick={onSearchClick} />
     </HeaderContainer>
   )
