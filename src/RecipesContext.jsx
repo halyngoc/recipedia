@@ -27,7 +27,7 @@ export function RecipesProvider(props) {
   // Sample data to save api calls
   const randomRecipes = sampleRandomRecipes
   // Actual api data here
-  // const randomRecipes = useFetch('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=10').recipes || []
+  // const randomRecipes = useFetch('https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=10', {}).recipes || []
 
   const [favoriteRecipes, dispatchFavoriteRecipes] = useReducer(reducer, loadFavoriteRecipes())
 

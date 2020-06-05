@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useDevice, useDate } from '../util'
 import { theme } from '../global'
-import { Button } from './Button'
+import { Button } from './buttons/Button'
 
 const HeroContainer = styled.div`
   text-align: center;

@@ -1,8 +1,8 @@
 import React from 'react'
 import 'boxicons'
-import { theme } from '../global'
-import { useDevice } from '../util'
-import { IconButton } from './Button'
+import { theme } from '../../global'
+import { useDevice } from '../../util'
+import { IconButton } from './IconButton'
 
 export default function ArrowButton(props) {
   const { onClick, isLeft } = props

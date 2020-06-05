@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import RecipeTab from './RecipeTab'
-import ArrowButton from './ArrowButton'
+import ArrowButton from './buttons/ArrowButton'
 import { useDevice } from '../util'
 import { theme } from '../global'
 import { RecipesContext } from '../RecipesContext'
@@ -40,7 +40,7 @@ const VerticalSidebarContainer = styled.div`
 
 const recipesTabLimit = 5
 
-export default function Sidebar() {
+export default function Sidebar({ onDiscoverClick, onFavoritesClick }) {
   const device = useDevice()
   const [currentTab, setCurrentTab] = useState(0)
   const [randomRecipes, favoriteRecipes] = useContext(RecipesContext)
@@ -55,14 +55,14 @@ export default function Sidebar() {
           <RecipeTab
             header="Discover"
             recipes={shownDiscoverRecipes}
-            buttonLabel="See recent"
-            onButtonClick={() => console.log('see recent button clicked')}
+            buttonLabel="See more"
+            onButtonClick={onDiscoverClick}
           />
           <RecipeTab
             header="My favorites"
             recipes={shownFavoriteRecipes}
             buttonLabel="See favorites"
-            onButtonClick={() => console.log('see favorites button clicked')}
+            onButtonClick={onFavoritesClick}
           />
         </VerticalSidebarContainer>
       )
@@ -74,8 +74,8 @@ export default function Sidebar() {
               <RecipeTab
                 header="Discover"
                 recipes={shownDiscoverRecipes}
-                buttonLabel="See recent"
-                onButtonClick={() => console.log('see recent button clicked')}
+                buttonLabel="See more"
+                onButtonClick={onDiscoverClick}
               />
               <ArrowButton onClick={() => setCurrentTab(1)} isLeft={false} />
             </>}
@@ -86,7 +86,7 @@ export default function Sidebar() {
                 header="My favorites"
                 recipes={shownFavoriteRecipes}
                 buttonLabel="See favorites"
-                onButtonClick={() => console.log('see favorites button clicked')}
+                onButtonClick={onFavoritesClick}
               />
             </>}
         </VerticalSidebarContainer>
@@ -97,14 +97,14 @@ export default function Sidebar() {
           <RecipeTab
             header="Discover"
             recipes={shownDiscoverRecipes}
-            buttonLabel="See recent"
-            onButtonClick={() => console.log('see recent button clicked')}
+            buttonLabel="See more"
+            onButtonClick={onDiscoverClick}
           />
           <RecipeTab
             header="My favorites"
             recipes={shownFavoriteRecipes}
             buttonLabel="See favorites"
-            onButtonClick={() => console.log('see favorites button clicked')}
+            onButtonClick={onFavoritesClick}
           />
         </SidebarContainer>
       )
