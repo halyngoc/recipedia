@@ -7,7 +7,7 @@ import Browse from './components/pages/Browse'
 
 function App() {
   const [currentPage, setCurrentPage] = useState('dashboard')
-  const [username, setUsername] = useState('user') // TODO: Implement name change
+  const [username] = useState('user') // TODO: Implement name change
 
   return (
     <ThemeProvider theme={theme}>
@@ -22,7 +22,7 @@ function App() {
           />}
         {currentPage === 'browse' &&
           <Browse
-            searchQuery="lolzor"
+            searchQuery="vegan"
             onSearchClick={() => console.log('search clicked')}
           />}
       </RecipesProvider>
