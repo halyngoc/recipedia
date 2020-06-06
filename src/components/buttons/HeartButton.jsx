@@ -25,7 +25,11 @@ export default function HeartButton({ onClick, filled }) {
   }, [filled])
 
   return (
-    <IconButton onClick={onClick} aria-label={filled ? 'Unfavorite' : 'Favorite'}>
+    <IconButton
+      title={filled ? 'Unfavorite' : 'Favorite'}
+      onClick={onClick}
+      aria-label={filled ? 'Unfavorite' : 'Favorite'}
+    >
       <box-icon
         name="heart"
         type={filled ? 'solid' : 'regular'}

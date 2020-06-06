@@ -30,7 +30,7 @@ export default function EscapeButton({ onClick, label }) {
   const device = useDevice()
 
   return (
-    <IconButton onClick={onClick} aria-label="Escape">
+    <IconButton title="Escape" onClick={onClick} aria-label="Escape">
       <box-icon
         name="x"
         color={theme.text}
