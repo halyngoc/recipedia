@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { breakpoints } from './global'
 
 export function isOneColumnLayout(device) {
@@ -54,4 +54,12 @@ export function useDate(refreshInterval = 60000) {
   }, [refreshInterval])
 
   return date
+}
+
+// curtesy of https://stackoverflow.com/a/54159564
+export const useFocus = () => {
+  const htmlRef = useRef(null)
+  const setFocus = () => { htmlRef.current && htmlRef.current.focus() }
+
+  return [htmlRef, setFocus]
 }
