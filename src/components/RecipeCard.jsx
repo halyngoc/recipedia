@@ -70,17 +70,17 @@ export default function RecipeCard({ recipe }) {
 
   return (
     <RecipeCardContainer>
-      <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
+      <a title={title} href={sourceUrl} target="_blank" rel="noopener noreferrer">
         <img src={image} alt={title} />
       </a>
       <div>
-        <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
-          <h3>{truncatedTitle}</h3>
+        <a title={title} href={sourceUrl} target="_blank" rel="noopener noreferrer">
+          <h3 title={title}>{truncatedTitle}</h3>
         </a>
         <HeartButton filled={isRecipeFavorite} onClick={isRecipeFavorite ? removeFromFavorites : addToFavorites} />
       </div>
-      <span>{readyInMinutes} mins</span>
-      <p>{summary}</p>
+      <span title={`Ready in ${readyInMinutes} minutes`}>{readyInMinutes} mins</span>
+      <p title={instructions}>{summary}</p>
     </RecipeCardContainer >
   )
 }
