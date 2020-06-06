@@ -14,16 +14,16 @@ Packages:
 ## Screenshots
 Desktop
 
-![Desktop](images/desktop.png)
+<img alt="desktop" src="images/desktop.png">
 
 Laptop
 
-![Laptop](images/laptop.png)
+<img alt="laptop" src="images/laptop.png" width="600px">
 
 Tablet
 
-![Tablet](images/tablet.png)
+<img alt="tablet" src="images/tablet.png" width="500px">
 
 Mobile
 
-![Mobile](images/mobile.png)
+<img alt="mobile" src="images/mobile.png" width="400px">
