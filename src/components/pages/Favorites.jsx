@@ -43,7 +43,12 @@ export default function Favorites({ onSearchClick, onLogoClick }) {
           <Header onSearchClick={onSearchClick} onLogoClick={onLogoClick} />
           <h1>My favorites</h1>
           <main>
-            {recipes.length > 0 ? <RecipePage recipes={shownRecipes} onMoreClick={() => setLimit(limit + pageSize)} /> : <p>No recipes</p>}
+            {recipes.length > 0 ?
+              <RecipePage
+                recipes={shownRecipes}
+                onMoreClick={() => setLimit(limit + pageSize)}
+                isSeeMoreButtonVisible={shownRecipes.length < recipes.length}
+              /> : <p>No recipes</p>}
           </main>
         </article>
       </Container>
