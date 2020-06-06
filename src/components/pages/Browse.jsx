@@ -71,7 +71,7 @@ export default function Browse({ onSearchClick, searchQuery, onLogoClick }) {
   // const [recipes, getNextBatch] = useBrowsePageRecipes(searchQuery)
 
   return (
-    <BrowseContainer>
+    <BrowseContainer device={device}>
       <Container
         device={device}
         align="center"
