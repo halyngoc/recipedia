@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/recipedia/static/js/main.d6379b17.chunk.js",
-    "main.js.map": "/recipedia/static/js/main.d6379b17.chunk.js.map",
+    "main.js": "/recipedia/static/js/main.751614bd.chunk.js",
+    "main.js.map": "/recipedia/static/js/main.751614bd.chunk.js.map",
     "runtime-main.js": "/recipedia/static/js/runtime-main.942e0537.js",
     "runtime-main.js.map": "/recipedia/static/js/runtime-main.942e0537.js.map",
-    "static/js/2.b56dac98.chunk.js": "/recipedia/static/js/2.b56dac98.chunk.js",
-    "static/js/2.b56dac98.chunk.js.map": "/recipedia/static/js/2.b56dac98.chunk.js.map",
+    "static/js/2.161fe7bd.chunk.js": "/recipedia/static/js/2.161fe7bd.chunk.js",
+    "static/js/2.161fe7bd.chunk.js.map": "/recipedia/static/js/2.161fe7bd.chunk.js.map",
     "index.html": "/recipedia/index.html",
-    "precache-manifest.e1caa00285163f15c5dc07fa962d7d16.js": "/recipedia/precache-manifest.e1caa00285163f15c5dc07fa962d7d16.js",
+    "precache-manifest.423d9e1c9d6319c360425bac53087d4d.js": "/recipedia/precache-manifest.423d9e1c9d6319c360425bac53087d4d.js",
     "service-worker.js": "/recipedia/service-worker.js",
-    "static/js/2.b56dac98.chunk.js.LICENSE.txt": "/recipedia/static/js/2.b56dac98.chunk.js.LICENSE.txt"
+    "static/js/2.161fe7bd.chunk.js.LICENSE.txt": "/recipedia/static/js/2.161fe7bd.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.942e0537.js",
-    "static/js/2.b56dac98.chunk.js",
-    "static/js/main.d6379b17.chunk.js"
+    "static/js/2.161fe7bd.chunk.js",
+    "static/js/main.751614bd.chunk.js"
   ]
 }
