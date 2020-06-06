@@ -36,7 +36,7 @@ export default function Dashboard({ username, onBrowseClick, onSeeFavoritesClick
         align={isOneColumnLayout(device) ? 'center' : 'right'}
         alignItems="center">
         <article>
-          <Header onSearchClick={() => console.log('search clicked')} />
+          <Header onSearchClick={onSearchClick} />
           <main>
             <Hero
               name={username}

@@ -44,7 +44,8 @@ const RecipeCardContainer = styled.div`
 `
 
 function truncateString(str = '', charLimit = 0) {
-  return str.length < charLimit ? str : str.substring(0, charLimit) + '...'
+  if (str) return str.length < charLimit ? str : str.substring(0, charLimit) + '...'
+  else return ''
 }
 
 export default function RecipeCard(props) {

@@ -15,4 +15,9 @@ export const IconButton = styled.button`
     outline: none;
     box-shadow: 0 0 0 2px ${theme.text};
   }
+
+  p {
+    margin: 0;
+    color: ${theme.text};
+  }
 `
