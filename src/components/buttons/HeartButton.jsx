@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import 'boxicons'
 import { theme } from '../../global'
-import { useDevice } from '../../util'
 import styled from 'styled-components'
 
 export const IconButton = styled.button`
@@ -21,15 +20,17 @@ export const IconButton = styled.button`
 `
 
 export default function HeartButton({ onClick, filled }) {
-  const device = useDevice()
+  useEffect(() => {
+    console.log('filled:', filled)
+  }, [filled])
 
   return (
     <IconButton onClick={onClick} aria-label={filled ? 'Unfavorite' : 'Favorite'}>
       <box-icon
         name="heart"
-        type={filled ? 'solid' : undefined}
+        type={filled ? 'solid' : 'regular'}
         color={theme.accent}
-        size={device === 'mobile' ? '1.5rem' : '2rem'}
+        size={'2rem'}
       />
     </IconButton>
   )

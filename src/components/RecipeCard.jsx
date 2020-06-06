@@ -22,12 +22,14 @@ const RecipeCardContainer = styled.div`
 
   div {
     display: flex;
+    justify-content: space-between;
 
     > a {
       display: flex;
       flex-flow: column nowrap;
       align-items: center;
       text-decoration: none;
+      margin-right: 0.5rem;
 
       > h3 {
         color: ${theme.accent};
