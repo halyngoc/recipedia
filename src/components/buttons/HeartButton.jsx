@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import 'boxicons'
 import { theme } from '../../global'
 import styled from 'styled-components'
@@ -20,10 +20,6 @@ export const IconButton = styled.button`
 `
 
 export default function HeartButton({ onClick, filled }) {
-  useEffect(() => {
-    console.log('filled:', filled)
-  }, [filled])
-
   return (
     <IconButton
       title={filled ? 'Unfavorite' : 'Favorite'}
