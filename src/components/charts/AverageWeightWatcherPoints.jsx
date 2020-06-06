@@ -2,7 +2,7 @@ import React from 'react'
 import { StatsContainer } from './StatsContainer'
 
 function recipesToAverageWWPoints(recipes) {
-  if (recipes.length === 0) return 0
+  if (!recipes || recipes.length === 0) return 0
 
   const wwPoints = recipes.map(recipe => recipe.weightWatcherSmartPoints).filter(time => time != null)
 
@@ -14,7 +14,7 @@ function recipesToAverageWWPoints(recipes) {
 }
 
 export default function AverageWeightWatcherPoints({ label, recipes }) {
-  const averageWWPoints = recipesToAverageWWPoints(recipes)
+  const averageWWPoints = recipesToAverageWWPoints(recipes).toFixed(2)
 
   if (averageWWPoints === 0) return null
   else return (

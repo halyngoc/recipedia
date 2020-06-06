@@ -18,6 +18,10 @@ const ChartsContainer = styled.div`
     gap: 0.5rem;
     overflow-x: scroll;
     overflow-y: hidden;
+
+    > p {
+      text-align: center;
+    }
   }
 `
 
@@ -25,12 +29,18 @@ const VerticalChartsContainer = styled.div`
   display: grid;
   width: 100%;
 
+
   > div {
     width: 100%;
     display: grid;
+    justify-content: center;
     grid-template-columns: 48% 48%;
     grid-template-rows: 1fr 1fr auto;
     gap: 1.5rem;
+
+    > p {
+      text-align: center;
+    }
   }
 `
 
@@ -45,9 +55,12 @@ export default function Charts() {
           <AveragePrepTime label="An average recipe takes" recipes={randomRecipes} />
           <AverageWeightWatcherPoints label="An average recipe has" recipes={randomRecipes} />
           <RecipesByCategory label={`${randomRecipes.length} random recipes by category`} recipes={randomRecipes} />
-          <AveragePrepTime label="Your average favorite recipe takes" recipes={favoriteRecipes} />
-          <AverageWeightWatcherPoints label="Your average favorite recipe has" recipes={favoriteRecipes} />
-          <RecipesByCategory label="Your favorite recipes by category" recipes={favoriteRecipes} />
+          {favoriteRecipes.length > 0 ?
+            <>
+              <AveragePrepTime label="Your average favorite recipe takes" recipes={favoriteRecipes} />
+              <AverageWeightWatcherPoints label="Your average favorite recipe has" recipes={favoriteRecipes} />
+              <RecipesByCategory label="Your favorite recipes by category" recipes={favoriteRecipes} />
+            </> : <p>Favorite some recipes to see more charts and data</p>}
         </div>
       </ChartsContainer>
     )
@@ -56,11 +69,13 @@ export default function Charts() {
       <VerticalChartsContainer>
         <div>
           <AveragePrepTime label="An average recipe takes" recipes={randomRecipes} />
-          <AveragePrepTime label="Your average favorite recipe takes" recipes={favoriteRecipes} />
+          {favoriteRecipes.length > 0 ?
+            <AveragePrepTime label="Your average favorite recipe takes" recipes={favoriteRecipes} /> :
+            <p>Favorite some recipes to see more charts and data</p>}
           <AverageWeightWatcherPoints label="An average recipe has" recipes={randomRecipes} />
-          <AverageWeightWatcherPoints label="Your average favorite recipe has" recipes={favoriteRecipes} />
+          {favoriteRecipes.length > 0 ? <AverageWeightWatcherPoints label="Your average favorite recipe has" recipes={favoriteRecipes} /> : <p></p>}
           <RecipesByCategory label={`${randomRecipes.length} random recipes by category`} recipes={randomRecipes} />
-          <RecipesByCategory label="Your favorite recipes by category" recipes={favoriteRecipes} />
+          {favoriteRecipes.length > 0 ? <RecipesByCategory label="Your favorite recipes by category" recipes={favoriteRecipes} /> : <p></p>}
         </div>
       </VerticalChartsContainer>
     )

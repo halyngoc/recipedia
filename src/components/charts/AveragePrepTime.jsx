@@ -2,7 +2,7 @@ import React from 'react'
 import { StatsContainer } from './StatsContainer'
 
 function recipesToAveragePrepTime(recipes) {
-  if (recipes.length === 0) return 0
+  if (!recipes || recipes.length === 0) return 0
 
   const prepTimes = recipes.map(recipe => recipe.readyInMinutes).filter(time => time != null)
 
@@ -14,7 +14,7 @@ function recipesToAveragePrepTime(recipes) {
 }
 
 export default function AveragePrepTime({ label, recipes }) {
-  const averagePrepTime = recipesToAveragePrepTime(recipes)
+  const averagePrepTime = recipesToAveragePrepTime(recipes).toFixed(2)
 
   if (averagePrepTime === 0) return null
   else return (

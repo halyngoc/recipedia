@@ -9,7 +9,11 @@ export default function ArrowButton(props) {
   const device = useDevice()
 
   return (
-    <IconButton onClick={onClick} aria-label={isLeft ? 'Left arrow' : 'Right arrow'}>
+    <IconButton
+      title={isLeft ? 'Left' : 'Right'}
+      onClick={onClick}
+      aria-label={isLeft ? 'Left arrow' : 'Right arrow'}
+    >
       <box-icon
         name={isLeft ? 'left-arrow' : 'right-arrow'}
         color={theme.text}
