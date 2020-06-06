@@ -13,13 +13,17 @@ Packages:
 
 ## Screenshots
 Desktop
-![Desktop](images\desktop.png)
+
+![Desktop](images/desktop.png)
 
 Laptop
-![Laptop](images\laptop.png)
+
+![Laptop](images/laptop.png)
 
 Tablet
-![Tablet](images\tablet.png)
+
+![Tablet](images/tablet.png)
 
 Mobile
-![Mobile](images\mobile.png)
+
+![Mobile](images/mobile.png)
