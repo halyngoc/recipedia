@@ -15,7 +15,7 @@ export const Button = styled.button`
     filter: saturate(5);
   }
 
-  :focus {
+  :focus, :hover {
     outline: none;
     box-shadow: 
       0 0 0 3px ${theme.background},

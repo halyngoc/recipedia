@@ -15,7 +15,7 @@ export const IconButton = styled.button`
     filter: saturate(5);
   }
 
-  :focus {
+  :focus, :hover {
     outline: none;
     box-shadow: 0 0 0 2px ${theme.text};
   }
