@@ -4,7 +4,7 @@ import { useDevice, isOneColumnLayout, useFetch } from '../../util'
 import { Container } from '../Container'
 import Header from '../Header'
 import RecipePage from '../RecipePage'
-import { randomRecipes as sampleRecipes } from '../../sampleResources'
+// import { randomRecipes as sampleRecipes } from '../../sampleResources'
 import { theme } from '../../global'
 
 const BrowseContainer = styled.div`

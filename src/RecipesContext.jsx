@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useEffect } from 'react'
-import { randomRecipes as sampleRandomRecipes } from './sampleResources'
+// import { randomRecipes as sampleRandomRecipes } from './sampleResources'
 import { useFetch } from './util'
 
 export const RecipesContext = createContext([])
