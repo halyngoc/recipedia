@@ -2,10 +2,6 @@
 
 Recipe dashboard for CS Front-end web techs, done in React JS.
 
-## Description
-
-Deployment: https://halyngoc.github.io/recipedia
-
 Packages:
 - [styled-components](https://styled-components.com/)
 - [gh-pages](https://github.com/gitname/react-gh-pages)
