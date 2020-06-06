@@ -8,22 +8,27 @@ import EscapeButton from '../buttons/EscapeButton'
 
 const SearchContainer = styled.div`
   section {
+    display: block;
     padding: ${props => isOneColumnLayout(props.device) ? '1rem 1.5rem' : '1.5rem 2rem'};
     width: 100%;
-    height: 100vh;
-    position: absolute;
+    height: 100%;
+    position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     background-color: ${theme.background};
 
     form {
       height: fit-content;
       display: flex;
-      justify-content: stretch;
+      flex-wrap: wrap;
+      justify-content: flex-end;
       align-items: center;
     
       input {
         flex-grow: 1;
+        flex-shrink: 1;
         background-color: #00000000;
         color: ${theme.accent};
         border: none;
@@ -38,6 +43,10 @@ const SearchContainer = styled.div`
         ::placeholder {
           color: ${theme.accent2};
         }
+      }
+
+      button:first-of-type {
+        margin-right: 1rem;
       }
     }
   }
@@ -55,7 +64,7 @@ export default function Browse({ isVisible, onSearch, onEscape }) {
 
   if (!isVisible) return null
   else return (
-    <SearchContainer>
+    <SearchContainer device={device}>
       <Container
         device={device}
         align="center"
@@ -71,8 +80,10 @@ export default function Browse({ isVisible, onSearch, onEscape }) {
               onChange={e => setSearchFieldValue(e.target.value)}
               autoFocus
             />
-            <SearchButton onClick={onFormSubmit} label="Enter" />
-            <EscapeButton onClick={onEscape} label="Esc" />
+            <div>
+              <SearchButton onClick={onFormSubmit} label={isOneColumnLayout(device) ? undefined : 'Enter'} />
+              <EscapeButton onClick={onEscape} label={isOneColumnLayout(device) ? undefined : 'Esc'} />
+            </div>
           </form>
         </section>
       </Container>
