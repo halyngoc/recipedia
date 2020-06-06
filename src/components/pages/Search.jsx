@@ -62,6 +62,8 @@ export default function Browse({ isVisible, onSearch, onEscape }) {
     onSearch(searchFieldValue)
   }
 
+  const onKeyDown = event => event.key === 'Escape' && onEscape()
+
   if (!isVisible) return null
   else return (
     <SearchContainer device={device}>
@@ -79,6 +81,7 @@ export default function Browse({ isVisible, onSearch, onEscape }) {
               aria-label="search"
               onChange={e => setSearchFieldValue(e.target.value)}
               autoFocus
+              onKeyDown={onKeyDown}
             />
             <div>
               <SearchButton onClick={onFormSubmit} label={isOneColumnLayout(device) ? undefined : 'Enter'} />
