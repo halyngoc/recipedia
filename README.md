@@ -1,4 +1,4 @@
-# Recipedia (WIP)
+# Recipedia
 
 Recipe dashboard for CS Front-end web techs, done in React JS.
 
