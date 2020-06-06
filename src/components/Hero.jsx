@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useDevice, useDate } from '../util'
 import { theme } from '../global'
 import { Button } from './buttons/Button'
+import EditButton from './buttons/EditButton'
 
 const HeroContainer = styled.div`
   text-align: center;
@@ -21,8 +22,7 @@ const HeroContainer = styled.div`
   }
 `
 
-export default function Hero(props) {
-  const { name, onBrowseClick, onSeeFavoritesClick } = props
+export default function Hero({ name, onChangeUsername, onBrowseClick, onSeeFavoritesClick }) {
   const device = useDevice()
   const date = useDate()
 
@@ -39,7 +39,7 @@ export default function Hero(props) {
 
   return (
     <HeroContainer device={device}>
-      <h1>Good {timeOfDay()}, <span>{name}</span></h1>
+      <h1>Good {timeOfDay()}, <span>{name}</span><EditButton /></h1>
       {dateTime}
       <div>
         <Button device={device} variant="primary" onClick={onBrowseClick}>Browse recipes</Button>

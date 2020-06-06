@@ -6,10 +6,11 @@ import Dashboard from './components/pages/Dashboard'
 import Browse from './components/pages/Browse'
 import Search from './components/pages/Search'
 import Favorites from './components/pages/Favorites'
+import { useUsername } from './util'
 
 function App() {
   const [currentPage, setCurrentPage] = useState('dashboard')
-  const [username] = useState('user') // TODO: Implement name change
+  const [username, changeUsername] = useUsername()
   const [searchQuery, setSearchQuery] = useState('')
   const [isSearchPageVisible, setIsSearchPageVisible] = useState(false)
 
@@ -26,6 +27,7 @@ function App() {
         {currentPage === 'dashboard' &&
           <Dashboard
             username={username}
+            onChangeUsername={name => changeUsername(name)}
             onBrowseClick={() => setCurrentPage('browse')}
             onSeeFavoritesClick={() => setCurrentPage('favorites')}
             onSearchClick={() => setIsSearchPageVisible(true)}

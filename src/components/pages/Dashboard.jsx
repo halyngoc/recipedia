@@ -26,7 +26,7 @@ const DashboardContainer = styled.div`
   }
 `
 
-export default function Dashboard({ username, onBrowseClick, onSeeFavoritesClick, onSearchClick }) {
+export default function Dashboard({ username, onChangeUsername, onBrowseClick, onSeeFavoritesClick, onSearchClick }) {
   const device = useDevice()
 
   return (
@@ -40,6 +40,7 @@ export default function Dashboard({ username, onBrowseClick, onSeeFavoritesClick
           <main>
             <Hero
               name={username}
+              onChangeUsername={onChangeUsername}
               onBrowseClick={onBrowseClick}
               onSeeFavoritesClick={onSeeFavoritesClick}
             />
