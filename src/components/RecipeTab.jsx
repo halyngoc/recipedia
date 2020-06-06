@@ -10,6 +10,7 @@ const TabContainer = styled.div`
   align-items: center;
   width: 100%;
   margin-bottom: 1rem;
+  height: 21rem;
 
   h2 {
     margin: 0;
@@ -18,12 +19,14 @@ const TabContainer = styled.div`
 
   > div {
     display: flex;
+    align-items: stretch;
     overflow-x: scroll;
     padding: 0 1rem;
     width: 100%;
+    height: 100%;
 
     button {
-      margin: 1rem;
+      margin: 0.5rem;
     }
   }
 `
@@ -33,7 +36,7 @@ const VerticalTabContainer = styled.div`
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
-  width: min-content;
+  width: 15rem;
   height: 100%;
 
   h2 {

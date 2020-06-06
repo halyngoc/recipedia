@@ -23,6 +23,7 @@ const RecipeCardContainer = styled.div`
   div {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
 
     > a {
       display: flex;
