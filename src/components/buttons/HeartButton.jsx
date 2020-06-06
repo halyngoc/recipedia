@@ -1,27 +1,13 @@
 import React from 'react'
 import 'boxicons'
 import { theme } from '../../global'
-import styled from 'styled-components'
-
-export const IconButton = styled.button`
-  background: none;
-  border: none;
-  border-radius: 10px;
-  padding: 2px 2px 0 2px;
-
-  :active {
-    filter: saturate(5);
-  }
-
-  :focus, :hover {
-    outline: none;
-    box-shadow: 0 0 0 2px ${theme.accent};
-  }
-`
+import { IconButton } from './IconButton'
 
 export default function HeartButton({ onClick, filled }) {
   return (
     <IconButton
+      padding="2px 2px 0 2px"
+      color={theme.accent}
       title={filled ? 'Unfavorite' : 'Favorite'}
       onClick={onClick}
       aria-label={filled ? 'Unfavorite' : 'Favorite'}

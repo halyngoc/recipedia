@@ -5,7 +5,7 @@ export const IconButton = styled.button`
   background: none;
   border: none;
   border-radius: 10px;
-  padding: 5px 0 0 5px;
+  padding: ${props => props.padding || '0'};
 
   :active {
     filter: saturate(5);
@@ -13,11 +13,11 @@ export const IconButton = styled.button`
 
   :focus, :hover {
     outline: none;
-    box-shadow: 0 0 0 2px ${theme.text};
+    box-shadow: 0 0 0 2px ${props => props.color || theme.text};
   }
 
   p {
     margin: 0;
-    color: ${theme.text};
+    color: ${props => props.color || theme.text};
   }
 `
