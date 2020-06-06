@@ -63,3 +63,16 @@ export const useFocus = () => {
 
   return [htmlRef, setFocus]
 }
+
+export function useUsername(initialValue = 'user') {
+  const loadUsername = () => localStorage.getItem('username') || initialValue
+
+  const [username, setUsername] = useState(loadUsername())
+
+  const changeUsername = name => {
+    setUsername(name)
+    localStorage.setItem('username', name)
+  }
+
+  return [username, changeUsername]
+}

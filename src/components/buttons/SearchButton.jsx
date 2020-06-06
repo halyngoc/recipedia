@@ -8,7 +8,12 @@ export default function SearchButton({ onClick, label }) {
   const device = useDevice()
 
   return (
-    <IconButton title="Search" onClick={onClick} aria-label="Search">
+    <IconButton
+      title="Search"
+      onClick={onClick}
+      aria-label="Search"
+      padding="5px 0 0 5px"
+    >
       <box-icon
         name="search"
         color={theme.text}
