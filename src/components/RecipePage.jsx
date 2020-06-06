@@ -5,8 +5,9 @@ import { Button } from './buttons/Button'
 
 const RecipePageContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 
   > div {
     display: flex;
@@ -16,13 +17,13 @@ const RecipePageContainer = styled.div`
   }
 `
 
-export default function RecipePage({ recipes, onMoreClick }) {
+export default function RecipePage({ recipes, onMoreClick, isSeeMoreButtonVisible }) {
   return (
     <RecipePageContainer>
       <div>
         {recipes.map((recipe, index) => <RecipeCard recipe={recipe} key={`recipe-page-card-${index}`} />)}
       </div>
-      <Button onClick={onMoreClick}>See more</Button>
+      {isSeeMoreButtonVisible && <Button onClick={onMoreClick}>See more</Button>}
     </RecipePageContainer>
   )
 }

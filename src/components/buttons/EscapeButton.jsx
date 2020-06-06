@@ -15,7 +15,7 @@ export const IconButton = styled.button`
     filter: saturate(5);
   }
 
-  :focus {
+  :focus, :hover {
     outline: none;
     box-shadow: 0 0 0 2px ${theme.text};
   }
@@ -30,7 +30,7 @@ export default function EscapeButton({ onClick, label }) {
   const device = useDevice()
 
   return (
-    <IconButton onClick={onClick}>
+    <IconButton onClick={onClick} aria-label="Escape">
       <box-icon
         name="x"
         color={theme.text}

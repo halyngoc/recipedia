@@ -71,7 +71,7 @@ export default function Browse({ onSearchClick, searchQuery, onLogoClick }) {
   // const [recipes, getNextBatch] = useBrowsePageRecipes(searchQuery)
 
   return (
-    <BrowseContainer>
+    <BrowseContainer device={device}>
       <Container
         device={device}
         align="center"
@@ -85,7 +85,12 @@ export default function Browse({ onSearchClick, searchQuery, onLogoClick }) {
                 <h1>Showing results for</h1>
                 <h2>{searchQuery}</h2>
               </>}
-            {recipes.length > 0 ? <RecipePage recipes={recipes} onMoreClick={getNextBatch} /> : <p>No results</p>}
+            {recipes.length > 0 ?
+              <RecipePage
+                recipes={recipes}
+                onMoreClick={getNextBatch}
+                isSeeMoreButtonVisible={true}
+              /> : <p>No results</p>}
           </main>
         </article>
       </Container>
