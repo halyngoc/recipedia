@@ -5,8 +5,9 @@ import { Button } from './buttons/Button'
 
 const RecipePageContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 
   > div {
     display: flex;
