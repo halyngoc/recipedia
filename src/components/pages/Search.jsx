@@ -71,8 +71,8 @@ export default function Browse({ isVisible, onSearch, onEscape }) {
               onChange={e => setSearchFieldValue(e.target.value)}
               autoFocus
             />
-            <SearchButton onClick={onFormSubmit} />
-            <EscapeButton onClick={onEscape} />
+            <SearchButton onClick={onFormSubmit} label="Enter" />
+            <EscapeButton onClick={onEscape} label="Esc" />
           </form>
         </section>
       </Container>

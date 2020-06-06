@@ -19,9 +19,14 @@ export const IconButton = styled.button`
     outline: none;
     box-shadow: 0 0 0 2px ${theme.text};
   }
+
+  p {
+    margin: 0;
+    color: ${theme.text};
+  }
 `
 
-export default function EscapeButton({ onClick }) {
+export default function EscapeButton({ onClick, label }) {
   const device = useDevice()
 
   return (
@@ -31,6 +36,7 @@ export default function EscapeButton({ onClick }) {
         color={theme.text}
         size={device === 'mobile' ? '2.5rem' : '3.5rem'}
       />
+      {label && <p>{label}</p>}
     </IconButton>
   )
 }
