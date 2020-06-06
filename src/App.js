@@ -5,6 +5,7 @@ import { RecipesProvider } from './RecipesContext'
 import Dashboard from './components/pages/Dashboard'
 import Browse from './components/pages/Browse'
 import Search from './components/pages/Search'
+import Favorites from './components/pages/Favorites'
 
 function App() {
   const [currentPage, setCurrentPage] = useState('dashboard')
@@ -26,12 +27,17 @@ function App() {
           <Dashboard
             username={username}
             onBrowseClick={() => setCurrentPage('browse')}
-            onSeeFavoritesClick={() => console.log('see favorites clicked')}
+            onSeeFavoritesClick={() => setCurrentPage('favorites')}
             onSearchClick={() => setIsSearchPageVisible(true)}
           />}
         {currentPage === 'browse' &&
           <Browse
             searchQuery={searchQuery}
+            onSearchClick={() => setIsSearchPageVisible(true)}
+            onLogoClick={() => setCurrentPage('dashboard')}
+          />}
+        {currentPage === 'favorites' &&
+          <Favorites
             onSearchClick={() => setIsSearchPageVisible(true)}
             onLogoClick={() => setCurrentPage('dashboard')}
           />}
