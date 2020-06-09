@@ -31,8 +31,8 @@ const BrowseContainer = styled.div`
 `
 
 function useMatchingRecipes(searchQuery = '', offset = 0) {
-  const matchingRecipes = useFetch(searchUrl, {}).results || []
   const searchUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query=${searchQuery}&offset=${offset}&number=${pageSize}`
+  const matchingRecipes = (useFetch(searchUrl) || {}).results || []
   const matchingRecipeIds = matchingRecipes.map(recipe => recipe.id)
 
   // If there are no matches, don't call the api for recipe details
@@ -46,6 +46,7 @@ function useMatchingRecipes(searchQuery = '', offset = 0) {
 function useBrowsePageRecipes(searchQuery) {
   const [offset, setOffset] = useState(0)
   const [recipes, setRecipes] = useState([])
+  const [hasNextBatch, setHasNextBatch] = useState(true)
 
   const matchingRecipes = useMatchingRecipes(searchQuery, offset)
   const getNextBatch = () => setOffset(offset + pageSize)
@@ -53,10 +54,15 @@ function useBrowsePageRecipes(searchQuery) {
   useEffect(() => setRecipes([]), [searchQuery])
 
   useEffect(() => {
-    if (matchingRecipes && matchingRecipes.length > 0) setRecipes(recipes => recipes.concat(matchingRecipes))
+    if (matchingRecipes && matchingRecipes.length > 0) {
+      setRecipes(recipes => recipes.concat(matchingRecipes))
+      setHasNextBatch(true)
+    } else if (matchingRecipes && matchingRecipes.length === 0) {
+      setHasNextBatch(false)
+    }
   }, [matchingRecipes])
 
-  return [recipes, getNextBatch]
+  return [recipes, getNextBatch, hasNextBatch]
 }
 
 const pageSize = 1
