@@ -31,33 +31,45 @@ const BrowseContainer = styled.div`
 `
 
 function useMatchingRecipes(searchQuery = '', offset = 0) {
-  const searchUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query=${searchQuery}&offset=${offset}&number=10`
-  const matchingRecipes = useFetch(searchUrl, {}).results || []
+  const searchUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query=${searchQuery}&offset=${offset}&number=${pageSize}`
+  const [recipes, isRecipesLoading] = useFetch(searchUrl)
+  const matchingRecipes = (recipes || {}).results || []
   const matchingRecipeIds = matchingRecipes.map(recipe => recipe.id)
-
-  console.log('matching ids', matchingRecipeIds)
 
   // If there are no matches, don't call the api for recipe details
   const detailedRecipesUrl = matchingRecipeIds.length > 0 ?
     `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/informationBulk?ids=${matchingRecipeIds.join()}` : null
-  const matchingDetailedRecipes = useFetch(detailedRecipesUrl) || []
+  const [matchingDetailedRecipes, isDetailedRecipesLoading] = useFetch(detailedRecipesUrl)
+  const results = matchingDetailedRecipes || []
 
-  return matchingDetailedRecipes
+  const isLoading = isRecipesLoading || isDetailedRecipesLoading
+
+  return [results, isLoading]
 }
 
 function useBrowsePageRecipes(searchQuery) {
   const [offset, setOffset] = useState(0)
   const [recipes, setRecipes] = useState([])
+  const [hasNextBatch, setHasNextBatch] = useState(true)
 
-  const matchingRecipes = useMatchingRecipes(searchQuery, offset)
-  const getNextBatch = () => setOffset(offset + 10)
+  const [matchingRecipes, isLoading] = useMatchingRecipes(searchQuery, offset)
+  const getNextBatch = () => setOffset(offset + pageSize)
+
+  useEffect(() => setRecipes([]), [searchQuery])
 
   useEffect(() => {
-    if (matchingRecipes && matchingRecipes.length > 0) setRecipes(recipes => recipes.concat(matchingRecipes))
+    if (matchingRecipes && matchingRecipes.length > 0) {
+      setRecipes(recipes => recipes.concat(matchingRecipes))
+      setHasNextBatch(true)
+    } else if (matchingRecipes && matchingRecipes.length === 0) {
+      setHasNextBatch(false)
+    }
   }, [matchingRecipes])
 
-  return [recipes, getNextBatch]
+  return [recipes, getNextBatch, hasNextBatch, isLoading]
 }
+
+const pageSize = 10
 
 export default function Browse({ onSearchClick, searchQuery, onLogoClick }) {
   const device = useDevice()
@@ -67,8 +79,27 @@ export default function Browse({ onSearchClick, searchQuery, onLogoClick }) {
   // This uses sample data
   // const [recipes, setRecipes] = useState(sampleRecipes)
   // const getNextBatch = () => setRecipes(recipes.concat(recipes))
+  // const hasNextBatch = false
   // And this uses api
-  const [recipes, getNextBatch] = useBrowsePageRecipes(searchQuery)
+  const [recipes, getNextBatch, hasNextBatch, isLoading] = useBrowsePageRecipes(searchQuery)
+
+  const getResultsDisplay = () => {
+    if (recipes.length === 0 && isLoading) return <p>Loading</p>
+    else if (recipes.length === 0) return <p>No results</p>
+    else if (isLoading) return <>
+      <RecipePage
+        recipes={recipes}
+        onMoreClick={getNextBatch}
+        isSeeMoreButtonVisible={hasNextBatch}
+      />
+      <p>Loading</p>
+    </>
+    else return <RecipePage
+      recipes={recipes}
+      onMoreClick={getNextBatch}
+      isSeeMoreButtonVisible={hasNextBatch}
+    />
+  }
 
   return (
     <BrowseContainer device={device}>
@@ -85,12 +116,7 @@ export default function Browse({ onSearchClick, searchQuery, onLogoClick }) {
                 <h1>Showing results for</h1>
                 <h2>{searchQuery}</h2>
               </>}
-            {recipes.length > 0 ?
-              <RecipePage
-                recipes={recipes}
-                onMoreClick={getNextBatch}
-                isSeeMoreButtonVisible={true}
-              /> : <p>No results</p>}
+            {getResultsDisplay()}
           </main>
         </article>
       </Container>

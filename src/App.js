@@ -20,6 +20,11 @@ function App() {
     setIsSearchPageVisible(false)
   }
 
+  const onBrowseClick = () => {
+    setSearchQuery('')
+    setCurrentPage('browse')
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <RecipesProvider>
@@ -28,7 +33,7 @@ function App() {
           <Dashboard
             username={username}
             onChangeUsername={name => changeUsername(name)}
-            onBrowseClick={() => setCurrentPage('browse')}
+            onBrowseClick={onBrowseClick}
             onSeeFavoritesClick={() => setCurrentPage('favorites')}
             onSearchClick={() => setIsSearchPageVisible(true)}
           />}
