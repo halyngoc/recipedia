@@ -31,11 +31,9 @@ const BrowseContainer = styled.div`
 `
 
 function useMatchingRecipes(searchQuery = '', offset = 0) {
-  const searchUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query=${searchQuery}&offset=${offset}&number=10`
   const matchingRecipes = useFetch(searchUrl, {}).results || []
+  const searchUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query=${searchQuery}&offset=${offset}&number=${pageSize}`
   const matchingRecipeIds = matchingRecipes.map(recipe => recipe.id)
-
-  console.log('matching ids', matchingRecipeIds)
 
   // If there are no matches, don't call the api for recipe details
   const detailedRecipesUrl = matchingRecipeIds.length > 0 ?
@@ -50,7 +48,7 @@ function useBrowsePageRecipes(searchQuery) {
   const [recipes, setRecipes] = useState([])
 
   const matchingRecipes = useMatchingRecipes(searchQuery, offset)
-  const getNextBatch = () => setOffset(offset + 10)
+  const getNextBatch = () => setOffset(offset + pageSize)
 
   useEffect(() => setRecipes([]), [searchQuery])
 
@@ -60,6 +58,8 @@ function useBrowsePageRecipes(searchQuery) {
 
   return [recipes, getNextBatch]
 }
+
+const pageSize = 1
 
 export default function Browse({ onSearchClick, searchQuery, onLogoClick }) {
   const device = useDevice()
