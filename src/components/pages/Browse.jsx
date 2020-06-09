@@ -52,6 +52,8 @@ function useBrowsePageRecipes(searchQuery) {
   const matchingRecipes = useMatchingRecipes(searchQuery, offset)
   const getNextBatch = () => setOffset(offset + 10)
 
+  useEffect(() => setRecipes([]), [searchQuery])
+
   useEffect(() => {
     if (matchingRecipes && matchingRecipes.length > 0) setRecipes(recipes => recipes.concat(matchingRecipes))
   }, [matchingRecipes])
