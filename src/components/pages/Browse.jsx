@@ -32,15 +32,17 @@ const BrowseContainer = styled.div`
 
 function useMatchingRecipes(searchQuery = '', offset = 0) {
   const searchUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query=${searchQuery}&offset=${offset}&number=${pageSize}`
-  const [recipes, isLoading] = useFetch(searchUrl)
+  const [recipes, isRecipesLoading] = useFetch(searchUrl)
   const matchingRecipes = (recipes || {}).results || []
   const matchingRecipeIds = matchingRecipes.map(recipe => recipe.id)
 
   // If there are no matches, don't call the api for recipe details
   const detailedRecipesUrl = matchingRecipeIds.length > 0 ?
     `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/informationBulk?ids=${matchingRecipeIds.join()}` : null
-  const matchingDetailedRecipes = useFetch(detailedRecipesUrl)
+  const [matchingDetailedRecipes, isDetailedRecipesLoading] = useFetch(detailedRecipesUrl)
   const results = matchingDetailedRecipes || []
+
+  const isLoading = isRecipesLoading || isDetailedRecipesLoading
 
   return [results, isLoading]
 }
@@ -81,6 +83,24 @@ export default function Browse({ onSearchClick, searchQuery, onLogoClick }) {
   // And this uses api
   const [recipes, getNextBatch, hasNextBatch, isLoading] = useBrowsePageRecipes(searchQuery)
 
+  const getResultsDisplay = () => {
+    if (recipes.length === 0 && isLoading) return <p>Loading</p>
+    else if (recipes.length === 0) return <p>No results</p>
+    else if (isLoading) return <>
+      <RecipePage
+        recipes={recipes}
+        onMoreClick={getNextBatch}
+        isSeeMoreButtonVisible={hasNextBatch}
+      />
+      <p>Loading</p>
+    </>
+    else return <RecipePage
+      recipes={recipes}
+      onMoreClick={getNextBatch}
+      isSeeMoreButtonVisible={hasNextBatch}
+    />
+  }
+
   return (
     <BrowseContainer device={device}>
       <Container
@@ -96,14 +116,7 @@ export default function Browse({ onSearchClick, searchQuery, onLogoClick }) {
                 <h1>Showing results for</h1>
                 <h2>{searchQuery}</h2>
               </>}
-            {recipes.length > 0 &&
-              <RecipePage
-                recipes={recipes}
-                onMoreClick={getNextBatch}
-                isSeeMoreButtonVisible={hasNextBatch}
-              />}
-            {recipes.length === 0 && !isLoading && <p>No results</p>}
-            {isLoading && <p>Loading</p>}
+            {getResultsDisplay()}
           </main>
         </article>
       </Container>
