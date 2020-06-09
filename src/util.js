@@ -26,20 +26,23 @@ export function useDevice() {
   else return 'desktop'
 }
 
-export function useFetch(url, initialValue) {
-  const [data, setData] = useState(initialValue)
+export function useFetch(url) {
+  const [data, setData] = useState(undefined)
 
   const apiKey = process.env.REACT_APP_API_KEY
 
   useEffect(() => {
-    if (!url) return
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-        'x-rapidapi-key': apiKey,
-      },
-    }).then(response => response.json()).then(json => setData(json))
+    if (!url) {
+      setData(undefined)
+    } else {
+      fetch(url, {
+        method: 'GET',
+        headers: {
+          'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
+          'x-rapidapi-key': apiKey,
+        },
+      }).then(response => response.json()).then(json => setData(json))
+    }
   }, [url, apiKey])
 
   return data
